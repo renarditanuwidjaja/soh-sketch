@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Ove Arup - Sydney Opera House Art</title>
+
+    <!-- Reference Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Homemade+Apple"
+      rel="stylesheet"
+    />
+
+    <!-- Reference ArcGIS JavaScript API -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.11/esri/themes/dark/main.css"
+    />
+    <script src="https://js.arcgis.com/4.11/"></script>
+
+    <!-- Reference styling and script -->
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <div id="background"></div>
+    <div id="ove-arup"><img src="./assets/images/ove-arup-sketch.png" /></div>
+    <div id="text"></div>
+    <div id="sign">Renardi Tanuwidjaja - 2019</div>
+    <div id="viewDiv"></div>
+  </body>
+
+  <script>
+    // set up text to print, each item in array is new line
+    var aText =
+      '"Engineering problems are under-defined, there are many solutions, good, bad and indifferent. The art is to arrive at a good solution. This is a creative activity, involving imagination, intuition and deliberate choice." ~ Ove Arup';
+    var iSpeed = 50; // time delay of print out
+    var iIndex = 0; // start printing array at this posision
+
+    var iTextPos = 0; // initialise text position
+
+    function handwriting() {
+      var destination = document.getElementById("text");
+
+      destination.innerHTML = aText.substring(0, iTextPos);
+      if (iTextPos < aText.length) {
+        iTextPos++;
+        setTimeout("handwriting()", iSpeed);
+      }
+    }
+
+    handwriting();
+  </script>
+</html>
